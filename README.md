@@ -36,7 +36,7 @@ The `CF_AUTHORIZATION` token is a Cloudflare Access cookie required for authenti
 2. Open Developer Tools (F12) > Application > Cookies
 3. Copy the value of the `CF_Authorization` cookie
 
-**Note:** The token lifetime is not well documented. If you get authentication errors, try refreshing the CF_AUTHORIZATION value in the `.env` file wiht the current token from your browser.
+**Note:** The token lifetime is not well documented. If you get authentication errors, try refreshing the CF_AUTHORIZATION value in the `.env` file with the current token from your browser.
 
 ## Usage
 
