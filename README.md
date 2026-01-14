@@ -36,7 +36,7 @@ The `CF_AUTHORIZATION` token is a Cloudflare Access cookie required for authenti
 2. Open Developer Tools (F12) > Application > Cookies
 3. Copy the value of the `CF_Authorization` cookie
 
-**Note:** The token lifetime is not well documented. If you get authentication errors, try refreshing the token from your browser.
+**Note:** The token lifetime is not well documented. If you get authentication errors, try refreshing the CF_AUTHORIZATION value in the `.env` file wiht the current token from your browser.
 
 ## Usage
 
@@ -70,7 +70,7 @@ uv run dremio login
 
 ## Available Tables
 
-Key tables in the GOLD database (`gold-db-2.postgresql.gold`):
+Example tables in the GOLD database (`gold-db-2.postgresql.gold`):
 
 | Table | Description |
 |-------|-------------|
@@ -79,7 +79,7 @@ Key tables in the GOLD database (`gold-db-2.postgresql.gold`):
 | `organism_v2` | GOLD organisms (replaces deprecated `organism` table) |
 | `analysis_project` | GOLD analysis projects |
 
-Sequencing projects are in a different namespace:
+Sequencing projects can be found in a different namespace:
 - `img-db-2.postgresql.img_gold.gold_sequencing_project`
 
 For the full schema, see the [GOLD home page](https://gold.jgi.doe.gov/) or contact the GOLD team.
@@ -88,11 +88,3 @@ For the full schema, see the [GOLD home page](https://gold.jgi.doe.gov/) or cont
 
 This tool uses the [Dremio REST API](https://docs.dremio.com/current/reference/api/). The current JGI instance is the open-source version; an Enterprise version with additional features is planned.
 
-## Related Resources
-
-- [BRIDGE Data Management Document](https://docs.google.com/document/d/1ezgBR6IbJNJjDntK27djICFIFNBKHeNtdgHqwELMQqU/) (internal)
-- [Dremio API Documentation](https://docs.dremio.com/current/reference/api/)
-
-## Contributing
-
-Questions or issues? Reach out in the `#ber-data-integration-crew` channel (NMDC Slack) or contact Mark Miller.
