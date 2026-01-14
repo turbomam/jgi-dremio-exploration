@@ -1,0 +1,97 @@
+[project]
+name = "dremio-client"
+version = "0.1.0"
+description = "CLI tool for querying JGI Dremio Lakehouse"
+authors = [
+    {name = "Mark Miller", email = "MAM@lbl.gov"},
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "click>=8.0.0",
+    "python-dotenv>=1.2.1",
+    "requests>=2.28.0",
+]
+
+[project.scripts]
+dremio = "dremio_client.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# =============================================================================
+# DEPENDENCY GROUPS
+# =============================================================================
+
+[dependency-groups]
+dev = [
+    "ipython>=8.0.0",
+]
+qa = [
+    "ruff>=0.8.0",
+    "mypy>=1.13.0",
+    "pytest>=8.0.0",
+    "pytest-cov>=6.0.0",
+    "types-requests>=2.28.0",
+]
+
+# =============================================================================
+# TOOL CONFIGURATIONS
+# =============================================================================
+
+# Ref.: https://docs.astral.sh/ruff/configuration/
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes
+    "I",      # isort
+    "B",      # flake8-bugbear
+    "C4",     # flake8-comprehensions
+    "UP",     # pyupgrade
+    "ARG",    # flake8-unused-arguments
+    "SIM",    # flake8-simplify
+    "PTH",    # flake8-use-pathlib
+    "RUF",    # Ruff-specific rules
+]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["dremio_client"]
+
+# Ref.: https://mypy.readthedocs.io/en/stable/config_file.html
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+strict_optional = true
+
+[[tool.mypy.overrides]]
+module = ["dotenv.*"]
+ignore_missing_imports = true
+
+# Ref.: https://docs.pytest.org/en/stable/reference/reference.html#configuration-options
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+# Ref.: https://pytest-cov.readthedocs.io/
+[tool.coverage.run]
+source = ["src/dremio_client"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.:",
+]
