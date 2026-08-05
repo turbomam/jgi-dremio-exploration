@@ -52,7 +52,16 @@ Column counts for the tables most likely to matter for a knowledge-graph ingest:
 | `project` | 99 |
 | `study` | 36 |
 
-`organism_v2` replaces the deprecated `organism` table. Sequencing projects are in the IMG namespace: `"img-db-2 postgresql".img_gold.gold_sequencing_project`.
+### Names that do not exist, despite appearing in other references
+
+Checked against this dump on 2026-08-05:
+
+| Name | Reality |
+|---|---|
+| `"gold-db-2 postgresql".gold.organism` | Not present. Use `organism_v2` (207 columns). |
+| `"gold-db-2 postgresql".gold.sequencing_project` | Not present. Sequencing projects are in the IMG namespace: `"img-db-2 postgresql".img_gold.gold_sequencing_project` (114 columns). |
+
+Both names are listed as key GOLD tables in the `jgi-lakehouse` skill's `references/databases.md` ([cmungall/lakehouse-skills](https://github.com/cmungall/lakehouse-skills)), which also gives the GOLD schema as 42 tables where this dump finds 387. Confirm a path from the catalog before relying on it.
 
 ## Caveats
 
