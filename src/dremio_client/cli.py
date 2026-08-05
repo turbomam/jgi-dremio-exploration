@@ -5,6 +5,7 @@ import datetime as dt
 import json
 import time
 from collections.abc import Iterator
+from pathlib import Path
 from typing import IO, Any
 
 import click
@@ -566,6 +567,232 @@ def columns(
 
     rows.sort(key=lambda r: (str(r["TABLE_NAME"]), int(r["ORDINAL_POSITION"] or 0)))
     write_rows(iter(rows), output, fmt)
+
+
+# ------------------------------------------------------------------------ KGX
+# KGX is the exchange format the KG-Hub graphs consume: a nodes TSV and an edges
+# TSV. kg-microbe's merge.yaml takes such a pair directly as a source, so emitting
+# these two files is a complete handoff; no transform code is needed in that repo.
+#
+# Every category and predicate below was checked against biolink-model.yaml on
+# 2026-08-05 rather than recalled:
+#   study               is_a activity            -> biolink:Study
+#   material sample     is_a physical entity     -> biolink:MaterialSample
+#   individual organism is_a organismal entity   -> biolink:IndividualOrganism
+#   organism taxon      is_a named thing         -> biolink:OrganismTaxon
+# and the predicates `derives from`, `in taxon` and `related to` all exist.
+#
+# Node ids use gold_id, the public accession (study_id 117882 is "Gs0117882").
+# It carries no foreign key anywhere in GOLD, so a constraint-driven extractor
+# would never find it, but it is the identifier the outside world uses: NMDC
+# records it as gold:Gp... in gold_sequencing_project_identifiers.
+
+GOLD = '"gold-db-2 postgresql".gold'
+KGX_NODE_COLS = ["id", "category", "name", "provided_by", "xref"]
+KGX_EDGE_COLS = ["id", "subject", "predicate", "object", "relation", "primary_knowledge_source"]
+SOURCE = "infores:gold"
+
+
+def _tsv(path: Path, cols: list[str], rows: Iterator[dict[str, Any]]) -> int:
+    n = 0
+    with path.open("w") as fh:
+        fh.write("\t".join(cols) + "\n")
+        for r in rows:
+            fh.write(
+                "\t".join(
+                    str(r.get(c, "") if r.get(c) is not None else "").replace("\t", " ").replace("\n", " ")
+                    for c in cols
+                )
+                + "\n"
+            )
+            n += 1
+    return n
+
+
+@main.command()
+@click.option("--output-dir", "-d", default="kgx", show_default=True, type=click.Path(file_okay=False))
+@click.option("--limit", type=int, help="Rows per source table. Omit for everything (slow).")
+@click.option("--user", prompt=True, envvar="DREMIO_USER")
+@click.option("--password", prompt=True, hide_input=True, envvar="DREMIO_PASSWORD")
+@click.option("--cf-token", envvar="CF_AUTHORIZATION")
+@click.pass_context
+def kgx(ctx: click.Context, output_dir: str, limit: int | None, user: str, password: str, cf_token: str | None) -> None:
+    """Emit GOLD as a KGX nodes/edges TSV pair
+
+    The output is directly consumable by a KG-Hub merge.yaml, for example:
+
+    \b
+      merged_graph:
+        source:
+          gold:
+            name: "gold"
+            input:
+              format: tsv
+              filename:
+                - kgx/nodes.tsv
+                - kgx/edges.tsv
+    """
+    conn = Conn(ctx, user, password, cf_token)
+    out = Path(output_dir)
+    out.mkdir(parents=True, exist_ok=True)
+
+    # A limit must be applied coherently or the sample is worthless. Taking the first
+    # N rows of each table independently gives three disjoint slices: the N organisms
+    # almost never reference the same N biosamples, so every relational edge comes out
+    # empty and only in_taxon survives. Measured with --limit 200 on 2026-08-05: 683
+    # nodes, 200 edges, all of them in_taxon. So when a limit is set, drive from
+    # organism_v2 and pull only the rows the sampled organisms actually reference.
+    def id_list(rows: list[dict[str, Any]], key: str) -> str:
+        vals = sorted({int(r[key]) for r in rows if r.get(key) is not None})
+        return ", ".join(str(v) for v in vals)
+
+    click.echo("querying organism_v2...", err=True)
+    orgs = conn.rows(
+        f"SELECT gold_id, organism_id, organism_name, biosample_id, "
+        f"ncbi_taxonomy_id, ncbi_taxonomy_name FROM {GOLD}.organism_v2 "
+        f"WHERE gold_id IS NOT NULL{f' LIMIT {int(limit)}' if limit else ''}"
+    )
+
+    if limit:
+        bs, oid = id_list(orgs, "biosample_id"), id_list(orgs, "organism_id")
+        click.echo(f"sampling coherently from {len(orgs)} organisms", err=True)
+        click.echo("querying biosample (only those the organisms reference)...", err=True)
+        samples = (
+            conn.rows(
+                f"SELECT gold_id, biosample_id, biosample_name FROM {GOLD}.biosample "
+                f"WHERE gold_id IS NOT NULL AND biosample_id IN ({bs})"
+            )
+            if bs
+            else []
+        )
+        click.echo("querying project links for those organisms...", err=True)
+        links = (
+            conn.rows(
+                f"SELECT organism_id, master_study_id FROM {GOLD}.project "
+                f"WHERE organism_id IN ({oid}) AND master_study_id IS NOT NULL"
+            )
+            if oid
+            else []
+        )
+        sids = id_list(links, "master_study_id")
+        click.echo("querying the studies those projects point at...", err=True)
+        studies = (
+            conn.rows(
+                f"SELECT gold_id, study_id, study_name FROM {GOLD}.study "
+                f"WHERE gold_id IS NOT NULL AND study_id IN ({sids})"
+            )
+            if sids
+            else []
+        )
+    else:
+        click.echo("querying study...", err=True)
+        studies = conn.rows(f"SELECT gold_id, study_id, study_name FROM {GOLD}.study WHERE gold_id IS NOT NULL")
+        click.echo("querying biosample...", err=True)
+        samples = conn.rows(
+            f"SELECT gold_id, biosample_id, biosample_name FROM {GOLD}.biosample WHERE gold_id IS NOT NULL"
+        )
+        click.echo("querying project (organism to study links)...", err=True)
+        links = conn.rows(
+            f"SELECT organism_id, master_study_id FROM {GOLD}.project "
+            f"WHERE organism_id IS NOT NULL AND master_study_id IS NOT NULL"
+        )
+
+    # Internal integer key -> public accession, so edges can be written in gold: CURIEs.
+    study_acc = {r["study_id"]: r["gold_id"] for r in studies}
+    sample_acc = {r["biosample_id"]: r["gold_id"] for r in samples}
+    org_acc = {r["organism_id"]: r["gold_id"] for r in orgs}
+
+    nodes: list[dict[str, Any]] = []
+    for r in studies:
+        nodes.append(
+            {"id": f"gold:{r['gold_id']}", "category": "biolink:Study", "name": r["study_name"], "provided_by": SOURCE}
+        )
+    for r in samples:
+        nodes.append(
+            {
+                "id": f"gold:{r['gold_id']}",
+                "category": "biolink:MaterialSample",
+                "name": r["biosample_name"],
+                "provided_by": SOURCE,
+            }
+        )
+    taxa: dict[str, str] = {}
+    for r in orgs:
+        xref = ""
+        if r.get("ncbi_taxonomy_id"):
+            tid = str(int(r["ncbi_taxonomy_id"]))
+            taxa[tid] = r.get("ncbi_taxonomy_name") or ""
+            xref = f"NCBITaxon:{tid}"
+        nodes.append(
+            {
+                "id": f"gold:{r['gold_id']}",
+                "category": "biolink:IndividualOrganism",
+                "name": r["organism_name"],
+                "provided_by": SOURCE,
+                "xref": xref,
+            }
+        )
+    for tid, tname in sorted(taxa.items()):
+        nodes.append(
+            {"id": f"NCBITaxon:{tid}", "category": "biolink:OrganismTaxon", "name": tname, "provided_by": SOURCE}
+        )
+
+    edges: list[dict[str, Any]] = []
+
+    def add(sub: str, pred: str, obj: str, rel: str) -> None:
+        edges.append(
+            {
+                "id": f"{sub}-{pred.split(':')[1]}-{obj}",
+                "subject": sub,
+                "predicate": pred,
+                "object": obj,
+                "relation": rel,
+                "primary_knowledge_source": SOURCE,
+            }
+        )
+
+    for r in orgs:
+        s = f"gold:{r['gold_id']}"
+        if r.get("biosample_id") in sample_acc:
+            add(s, "biolink:derives_from", f"gold:{sample_acc[r['biosample_id']]}", "gold:organism_v2.biosample_id")
+        if r.get("ncbi_taxonomy_id"):
+            add(s, "biolink:in_taxon", f"NCBITaxon:{int(r['ncbi_taxonomy_id'])}", "gold:organism_v2.ncbi_taxonomy_id")
+    for r in links:
+        if r["organism_id"] in org_acc and r["master_study_id"] in study_acc:
+            add(
+                f"gold:{org_acc[r['organism_id']]}",
+                "biolink:related_to",
+                f"gold:{study_acc[r['master_study_id']]}",
+                "gold:project.organism_id+master_study_id",
+            )
+
+    # An organism can appear in many projects under one study; collapse repeats.
+    seen: set[str] = set()
+    deduped: list[dict[str, Any]] = []
+    for e in edges:
+        if e["id"] not in seen:
+            seen.add(str(e["id"]))
+            deduped.append(e)
+
+    # organism_v2.biosample_id is a declared foreign key that is almost never
+    # populated: 243 of 605,885 rows on 2026-08-05, 0.04%. The linkage that carries
+    # the data goes the long way round, organism_v2 <- project.organism_id ...
+    # project_biosample -> biosample, which has 285,986 rows against 279,671
+    # biosamples. Until this command follows that path, say so rather than shipping a
+    # graph that looks like GOLD has no samples.
+    derives = sum(1 for e in deduped if e["predicate"] == "biolink:derives_from")
+    if not derives:
+        click.echo(
+            "NOTE: 0 derives_from edges. organism_v2.biosample_id is populated on only "
+            "0.04% of rows; the real organism-to-biosample path is via project and "
+            "project_biosample and is not implemented yet.",
+            err=True,
+        )
+
+    n = _tsv(out / "nodes.tsv", KGX_NODE_COLS, iter(nodes))
+    m = _tsv(out / "edges.tsv", KGX_EDGE_COLS, iter(deduped))
+    click.echo(f"wrote {n} nodes and {m} edges to {out}/", err=True)
+    click.echo(f"  dropped {len(edges) - len(deduped)} duplicate edges", err=True)
 
 
 if __name__ == "__main__":

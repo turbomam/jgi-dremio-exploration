@@ -167,7 +167,8 @@ For GOLD's own documentation see the [GOLD home page](https://gold.jgi.doe.gov/)
 - **A missing cookie looks like a 200.** See above.
 - **`rowCount` is not a reliable stopping condition.** `DESCRIBE TABLE` reports `rowCount: 0` in both the job status and the results payload while returning rows, so a `while offset < rowCount` loop yields nothing. This CLI treats an empty page, not `rowCount`, as the end of the data.
 - **TLS verification is on by default.** The lakehouse presents a valid public certificate (Google Trust Services), so the `verify=False` this client used to hard-code was unnecessary. `--insecure` still exists if a future proxy needs it.
-- **Catalog queries are slow.** A schema-wide `INFORMATION_SCHEMA` query can take a minute or more; use `-o` and let it run.
+- **Catalog queries are slow.** A schema-wide `INFORMATION_SCHEMA` query can take a minute or more; use `-o` and let it run. Arrow Flight would be faster, but see below.
+- **Arrow Flight is not reachable off the LBL network.** Dremio's Flight SQL endpoint is a different host and port from the REST one: `lakehouse-1.jgi.lbl.gov:32010`, which resolves to `128.3.96.93` in LBL address space. Measured 2026-08-05 from off-VPN: port 32010 refused on that host, timed out through the Cloudflare name, and only `lakehouse.jgi.lbl.gov:443` was open. `linkml-store` ships a Flight-based `dremio` adapter (`pyarrow` + `adbc-driver-flightsql`) and it is installed here, so the client side is ready whenever the network is. Until then REST is the only off-network path.
 - **Some paths need the LBL VPN.** The lakehouse itself does not, but other JGI services (the PPS/Data Warehouse gateways) do.
 
 ## API Reference

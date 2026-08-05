@@ -133,6 +133,24 @@ The uncovered occurrences cluster in the `dw_*`, `gold_master_*`, `backup_202607
 
 **This section is inference from column names, not verified joins.** Nothing here has been checked for value overlap or cardinality between the two sides. Treat it as a list of candidates to test, not as a schema.
 
+### A declared foreign key can still be empty
+
+Measured 2026-08-05, and it cuts the other way from everything above:
+
+| Column | Populated |
+|---|---|
+| `organism_v2.gold_id` | 605,885 / 605,885 (100%) |
+| `organism_v2.ncbi_taxonomy_id` | 605,885 / 605,885 (100%) |
+| `organism_v2.biosample_id` | **243 / 605,885 (0.04%)** |
+
+`organism_v2.biosample_id` is a real declared foreign key (`biosample_v2_fk` → `biosample.biosample_id`) and it is almost entirely null. A KG built by walking declared foreign keys would conclude that GOLD organisms have essentially no samples.
+
+The linkage that carries the data takes the long way round: `organism_v2` ← `project.organism_id` … `project.project_id` ← `project_biosample.project_id` → `biosample`. That is 285,986 `project_biosample` rows against 279,671 biosamples and 438,201 projects carrying an `organism_id`.
+
+So the lesson from the section above has a mirror image. Undeclared columns can be the real joins, **and** declared foreign keys can be nearly empty. Check cardinality before trusting either.
+
+`organism_v2` also has 605,885 rows, not the 598,061 quoted in older notes.
+
 ## Caveats
 
 - A dump is a snapshot. The `backup_20260731_*` tables show the source schema does change.
