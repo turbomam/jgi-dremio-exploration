@@ -24,6 +24,12 @@ load_dotenv()
 # response has to be checked for HTML before it is parsed.
 COOKIE_NAME = "CF_Authorization"
 
+# Dremio's job-results endpoint serves at most 500 rows per request. Asking for more
+# returns an empty row list rather than 500 or an error, so this is a ceiling to
+# respect, not a hint to tune. Measured 2026-08-05: limit=500 -> 500 rows,
+# limit=1000 -> 0 rows, limit=5000 -> 0 rows.
+MAX_PAGE = 500
+
 
 def _cookies(cf_token: str | None) -> dict[str, str]:
     return {COOKIE_NAME: cf_token} if cf_token else {}
@@ -170,12 +176,12 @@ def fetch_rows(
     headers: dict[str, str],
     cookies: dict[str, str],
     verify: bool,
-    page: int = 500,
+    page: int = MAX_PAGE,
     stop_after: int | None = None,
 ) -> Iterator[dict[str, Any]]:
     """Yield a completed job's rows, following pagination to the end.
 
-    Two measured behaviours shape this loop, both of which lose data if ignored:
+    Three measured behaviours shape this loop, all of which lose data if ignored:
 
     1. An unpaginated GET of /results returns only Dremio's first page. On
        2026-08-05 that was 100 of 6,096 schemas, with nothing to say the other
@@ -184,7 +190,15 @@ def fetch_rows(
        rowCount 0 in both the job status and the results payload while returning 13
        rows, so a `while offset < row_count` loop yields nothing at all. rowCount is
        therefore a hint; an empty page is the authority on where the data ends.
+    3. The results endpoint caps at MAX_PAGE rows and does not say so. Asking for
+       limit=1000 or limit=5000 returns **0 rows**, not 500 and not an error, so a
+       caller that raises the page size to go faster gets an empty result and, given
+       rule 2, reads it as the end of the data. Measured 2026-08-05.
     """
+    if page > MAX_PAGE:
+        raise click.ClickException(
+            f"page={page} exceeds Dremio's results cap of {MAX_PAGE}; the endpoint would return 0 rows"
+        )
     target = row_count if row_count > 0 else None
     if stop_after is not None:
         target = stop_after if target is None else min(target, stop_after)
