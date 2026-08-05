@@ -196,28 +196,48 @@ The page cap is the reason `MAX_PAGE` is a constant and not a tuning knob. Raisi
 
 Arrow Flight SQL is Dremio's alternative: one streamed result set of Arrow record batches over gRPC, with no per-page round trip, no 500-row ceiling, and no JSON parse. `linkml-store` ships a Flight-based `dremio` adapter and the dependencies (`pyarrow`, `adbc-driver-flightsql`) are already installed here.
 
-It is **not reachable off the LBL network**. Flight is a different host and port from REST:
+It is **not reachable off the LBL network**, but on the LBL VPN it works and it is much faster. Both measured 2026-08-05:
 
-```
-lakehouse-1.jgi.lbl.gov      128.3.96.93          (LBL address space)
-lakehouse-1.jgi.lbl.gov:32010  refused
-lakehouse.jgi.lbl.gov:32010    timed out
-lakehouse.jgi.lbl.gov:443      OPEN                (the REST path, via Cloudflare)
+| | Off VPN | On VPN |
+|---|---|---|
+| `lakehouse-1.jgi.lbl.gov:32010` | refused | **OPEN** |
+| `lakehouse.jgi.lbl.gov:443` (REST) | OPEN | OPEN |
+
+Same query, `SELECT gold_id, organism_name, ncbi_taxonomy_id FROM ... organism_v2 WHERE gold_id IS NOT NULL`, 605,885 rows:
+
+| | REST | Arrow Flight |
+|---|---|---|
+| Throughput | 1,912 rows/sec | **19,456 rows/sec** |
+| Wall clock | ~5.3 min | **31.1 s** |
+| Round trips | 1,212 | 1 stream |
+| Page cap | 500 rows | none |
+
+**10.2x**, and the gap is round-trip overhead rather than bandwidth, so it widens with row count.
+
+Two things that make Flight easier as well as faster: it needs **no Cloudflare cookie** (username and password only, because it does not traverse Cloudflare), and it connects with **`tls=False`** on port 32010.
+
+### The documented API is wrong for wheel v1.1.0
+
+`fmschulz/omics-skills` `docs/arrow-flight-python.md` shows `conn.query("SELECT 1")`. `DremioFlightEndpointConnection` has no `query` method; its only public member is `connect`. The working pattern puts the SQL in the connection args:
+
+```python
+from dremio.flight.endpoint import DremioFlightEndpoint
+
+ep = DremioFlightEndpoint({
+    "hostname": "lakehouse-1.jgi.lbl.gov",
+    "port": 32010,
+    "tls": False,
+    "username": ...,
+    "password": ...,
+    "query": "SELECT 1",
+})
+client = ep.connect()
+df = ep.get_reader(client).read_pandas()
 ```
 
-To settle it from on-VPN, per `fmschulz/omics-skills` `docs/arrow-flight-python.md`:
+Run it with:
 
 ```bash
-uv run --with "dremio-flight @ https://github.com/dremio-hub/arrow-flight-client-examples/releases/download/dremio-flight-python-v1.1.0/dremio_flight-1.1.0-py3-none-any.whl" - <<'PY'
-import os
-from dremio.flight.connection import DremioFlightEndpointConnection
-conn = DremioFlightEndpointConnection({
-    "hostname": "lakehouse-1.jgi.lbl.gov",
-    "username": os.environ["DREMIO_USER"],
-    "password": os.environ["DREMIO_PASSWORD"],
-})
-print(conn.query("SELECT 1"))
-PY
+uv run --with "dremio-flight @ https://github.com/dremio-hub/arrow-flight-client-examples/releases/download/dremio-flight-python-v1.1.0/dremio_flight-1.1.0-py3-none-any.whl" --with pandas your_script.py
 ```
 
-If that returns, time the same `organism_v2` query and compare against 1,912 rows/sec. Note Flight uses username and password only; no Cloudflare cookie is involved, because it does not go through Cloudflare.
