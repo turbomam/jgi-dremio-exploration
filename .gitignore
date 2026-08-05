@@ -52,6 +52,10 @@ htmlcov/
 *.tsv
 *.csv
 
+# Catalog dumps are checked in on purpose: they are schema metadata, not row data,
+# and they are the answer to "what tables are in there" without needing credentials.
+!docs/catalog/*.tsv
+
 # OS
 .DS_Store
 Thumbs.db

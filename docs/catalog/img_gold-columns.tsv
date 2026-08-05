@@ -1,0 +1,918 @@
+TABLE_SCHEMA	TABLE_NAME	ORDINAL_POSITION	COLUMN_NAME	DATA_TYPE	IS_NULLABLE	CHARACTER_MAXIMUM_LENGTH	NUMERIC_PRECISION	NUMERIC_SCALE	SOURCE
+img-db-2 postgresql.img_gold	gold_analysis_project	1	gold_analysis_project_id	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	2	its_analysis_project_id	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	3	analysis_project_name	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	4	ncbi_tax_id	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	5	img_dataset_id	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	6	analysis_product_name	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	7	visibility	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	8	domain	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	9	ncbi_phylum	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	10	ncbi_class	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	11	ncbi_order	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	12	ncbi_family	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	13	ncbi_genus	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	14	ncbi_species	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	15	gold_analysis_project_type	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	16	gold_proposal_name	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	17	ecosystem	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	18	ecosystem_category	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	19	ecosystem_subtype	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	20	specific_ecosystem	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	21	reference_img_oid	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	22	pi_name	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	23	pi_email	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	24	submitter_contact_oid	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	25	ecosystem_type	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	26	specimen	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	27	comments	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	28	reference_img_experiment_id	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	29	reference_gold_ap_id	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	30	gold_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	31	genome_size	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	32	gene_count	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	33	scaffold_count	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	34	its_analysis_project_name	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	35	contig_count	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	36	genbank_low_quality_annotation	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	37	genbank_low_quality_genome	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	38	completion_date	TIMESTAMP	YES				information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	39	binning_method	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	40	gene_calling_method	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	41	submission_id	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	42	img_analysis_complete	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	43	status	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	44	is_gene_primp	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	45	gene_primp_date	TIMESTAMP	YES				information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	46	is_decontamination	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	47	is_img_annotation	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	48	its_annotation_at_id	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	49	its_assembly_at_id	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	50	is_assembled	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	51	genome_type	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	52	study_gold_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	53	locus_tag	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	54	cultured	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	55	jgi_sequenced	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	56	reference_gold_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	57	strain	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	58	mod_date	TIMESTAMP	YES				information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	59	submission_type	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	60	submitter_email	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	61	review_status	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	62	caliban_id	BIGINT	YES		64	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	63	assembly_method	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	64	genus	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	65	species	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	66	sequencing_depth	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	67	img_use	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	68	gold_phylogeny	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	69	uncultured_type	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	70	culture_type	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	71	ncbi_superkingdom	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	72	external	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	73	pipeline_version	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	74	its_data_utilization_status	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	75	is_genbank_anomalous_assembly	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project	76	img_annotation_version	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_genbanks	1	gold_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_genbanks	2	genbank_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_genbanks	3	assembly_accession	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_genbanks	4	type	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_jgi_award_dois	1	gold_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_jgi_award_dois	2	jgi_award_doi	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_lookup2	1	gold_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_lookup2	2	its_spid	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_lookup2	3	project_oid	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_lookup2	4	sample_oid	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_lookup2	5	sp_gold_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_lookup2	6	pmo_project_id	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_sra_runs	1	gold_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_sra_runs	2	sra_run	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_users	1	gold_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_users	2	name	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_users	3	email	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_users	4	role	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_users	5	caliban_id	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_users	6	ariel_contact_id	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_users	7	keycloak_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_analysis_project_users	8	orcid_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_ap_genbank	1	id	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_ap_genbank	2	gold_analysis_project_id	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_ap_genbank	3	genbank_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_ap_genbank	4	assembly_accession	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_ap_genbank_anomalous_reasons	1	gold_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_ap_genbank_anomalous_reasons	2	genbank_anomalous_reason	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_ap_publications	1	gold_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_ap_publications	2	pubmed_id	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_ap_publications	3	journal_name	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_ap_publications	4	volume	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_ap_publications	5	issue	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_ap_publications	6	page	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_ap_publications	7	title	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_ap_publications	8	publication_date	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_ap_publications	9	doi	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_contactcv	1	cv_term	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_img_nat_prod_entity	1	gold_np_id	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_img_nat_prod_entity	2	np_id	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_img_nat_prod_entity	3	project_oid	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_img_nat_prod_entity	4	img_oid	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_img_nat_prod_entity	5	bio_cluster_id	INTEGER	YES		32	0	information_schema
+img-db-2 postgresql.img_gold	gold_img_nat_prod_entity	6	evidence	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_img_nat_prod_entity	7	activity	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	1	analysis_project_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	2	gold_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	3	organism_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	4	external	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	5	its_analysis_project_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	6	analysis_project_name	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	7	img_taxon_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	8	its_product_name	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	9	is_public	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	10	analysis_project_type	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	11	ecosystem	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	12	ecosystem_category	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	13	ecosystem_type	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	14	ecosystem_subtype	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	15	specific_ecosystem	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	16	specimen	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	17	comments	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	18	est_size	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	19	gene_count	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	20	scaffold_count	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	21	its_analysis_project_name	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	22	contig_count	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	23	genbank_low_quality_annotation	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	24	completion_date	TIMESTAMP	YES				information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	25	binning_method	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	26	gene_calling_method	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	27	submission_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	28	status_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	29	is_decontamination	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	30	its_annotation_at_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	31	study_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	32	reference_ap_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	33	mod_date	TIMESTAMP	YES				information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	34	is_primary	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	35	review_status	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	36	sequencing_depth	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	37	img_use	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	38	pipeline_annotation_method	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	39	replaces_ap_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	40	img_annotation_version	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project	41	is_mag_or_meg	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	1	analysis_project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	2	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	3	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	4	external	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	5	its_analysis_project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	6	analysis_project_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	7	img_taxon_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	8	its_product_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	9	is_public	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	10	analysis_project_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	11	ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	12	ecosystem_category	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	13	ecosystem_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	14	ecosystem_subtype	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	15	specific_ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	16	specimen	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	17	comments	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	18	est_size	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	19	gene_count	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	20	scaffold_count	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	21	its_analysis_project_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	22	contig_count	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	23	genbank_low_quality_annotation	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	24	completion_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	25	binning_method	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	26	gene_calling_method	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	27	submission_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	28	status_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	29	is_decontamination	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	30	its_annotation_at_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	31	study_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	32	reference_ap_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	33	mod_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	34	is_primary	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	35	review_status	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	36	sequencing_depth	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	37	img_use	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	38	pipeline_annotation_method	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	39	replaces_ap_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	40	img_annotation_version	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_	41	is_mag_or_meg	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_publication	1	analysis_project_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project_publication	2	publication_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project_publication_	1	analysis_project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_publication_	2	publication_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_sra_run	1	analysis_project_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project_sra_run	2	sra_run_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_analysis_project_sra_run_	1	analysis_project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_analysis_project_sra_run_	2	sra_run_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_assembly	1	analysis_project_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_assembly	2	method	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_assembly_	1	analysis_project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_assembly_	2	method	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample	1	biosample_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	2	gold_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	3	active	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	4	is_public	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	5	ncbi_taxonomy_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	6	sample_collection_site	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	7	sample_isolation_country_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	8	sample_collection_year	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	9	sample_collection_month	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	10	sample_collection_day	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	11	geographic_location	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	12	latitude	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	13	longitude	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	14	host_name	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	15	host_gender	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	16	host_taxonomy_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	17	ecosystem	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	18	ecosystem_category	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	19	ecosystem_type	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	20	ecosystem_subtype	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	21	specific_ecosystem	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	22	host_body_site	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	23	host_body_subsite	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	24	mrn	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	25	patient_visit_number	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	26	longhurst_code	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	27	proport_ocean	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	28	proport_isolation	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	29	proport_station	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	30	proport_woa_temperature	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	31	proport_woa_salinity	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	32	proport_woa_dissolved_oxygen	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	33	proport_woa_silicate	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	34	proport_woa_phosphate	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	35	proport_woa_nitrate	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	36	growth_temperature	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	37	pressure	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	38	chlorophyll_concentration	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	39	oxygen_concentration	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	40	salinity_concentration	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	41	nitrate_concentration	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	42	ph1	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	43	ph2	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	44	depth	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	45	depth2	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	46	altitude	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	47	altitude2	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	48	elevation	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	49	elevation2	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	50	subsurface_depth	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	51	subsurface_depth2	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample	52	habitat	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_biosample_	1	biosample_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	2	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	3	active	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	4	is_public	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	5	ncbi_taxonomy_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	6	sample_collection_site	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	7	sample_isolation_country_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	8	sample_collection_year	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	9	sample_collection_month	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	10	sample_collection_day	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	11	geographic_location	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	12	latitude	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	13	longitude	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	14	host_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	15	host_gender	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	16	host_taxonomy_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	17	ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	18	ecosystem_category	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	19	ecosystem_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	20	ecosystem_subtype	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	21	specific_ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	22	host_body_site	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	23	host_body_subsite	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	24	mrn	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	25	patient_visit_number	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	26	longhurst_code	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	27	proport_ocean	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	28	proport_isolation	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	29	proport_station	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	30	proport_woa_temperature	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	31	proport_woa_salinity	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	32	proport_woa_dissolved_oxygen	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	33	proport_woa_silicate	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	34	proport_woa_phosphate	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	35	proport_woa_nitrate	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	36	growth_temperature	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	37	pressure	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	38	chlorophyll_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	39	oxygen_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	40	salinity_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	41	nitrate_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	42	ph1	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	43	ph2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	44	depth	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	45	depth2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	46	altitude	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	47	altitude2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	48	elevation	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	49	elevation2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	50	subsurface_depth	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	51	subsurface_depth2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_biosample_	52	habitat	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_contact	1	contact_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_contact	2	name	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_contact	3	email	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_contact	4	caliban_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_contact	5	orcid_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_contact	6	chariel_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_contact_	1	contact_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_contact_	2	name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_contact_	3	email	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_contact_	4	caliban_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_contact_	5	orcid_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_contact_	6	chariel_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvap_status	1	id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_cvap_status	2	term	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_cvap_status_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvap_status_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_cvbiotic_relationship	1	id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_cvbiotic_relationship	2	term	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_cvbiotic_relationship_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvbiotic_relationship_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_cvcell_arrangement	1	id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_cvcell_arrangement	2	term	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_cvcell_arrangement_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvcell_arrangement_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_cvcountry	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvcountry	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_cvcountry_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvcountry_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_cvdisease	1	id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_cvdisease	2	term	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_cvdisease_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvdisease_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_cvenergy_source	1	id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_cvenergy_source	2	term	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_cvenergy_source_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvenergy_source_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_cvhabitat	1	id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_cvhabitat	2	term	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_cvhabitat_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvhabitat_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_cvmetabolism	1	id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_cvmetabolism	2	term	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_cvmetabolism_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvmetabolism_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_cvphenotype	1	id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_cvphenotype	2	term	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_cvphenotype_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvphenotype_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_cvrelevance	1	id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_cvrelevance	2	term	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_cvrelevance_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvrelevance_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_cvseq_quality	1	id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_cvseq_quality	2	term	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_cvseq_quality_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvseq_quality_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_cvseq_status	1	id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_cvseq_status	2	term	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_cvseq_status_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_cvseq_status_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_dw_ap_data_utilization_status	1	analysis_project_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_dw_ap_data_utilization_status	2	data_utilization_status	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_dw_ap_data_utilization_status_	1	analysis_project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_dw_ap_data_utilization_status_	2	data_utilization_status	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_genbank	1	analysis_project_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_genbank	2	genbank_id	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_genbank	3	assembly_accession	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_genbank	4	type	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_genbank	5	is_ncbi_public	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_genbank	6	anomalous_assembly	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_genbank	7	anomalous_reason	CHARACTER VARYING	YES	65536			information_schema
+img-db-2 postgresql.img_gold	gold_master_genbank_	1	analysis_project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_genbank_	2	genbank_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_genbank_	3	assembly_accession	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_genbank_	4	type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_genbank_	5	is_ncbi_public	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_genbank_	6	anomalous_assembly	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_genbank_	7	anomalous_reason	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_hmp_project	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_hmp_project	2	hmp_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_hmp_project_	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_hmp_project_	2	hmp_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_institution	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_institution	2	name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_institution	3	country	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_institution	4	url	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_institution_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_institution_	2	name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_institution_	3	country	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_institution_	4	url	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_its_proposal	1	its_proposal_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_its_proposal	2	proposal_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_its_proposal	3	award_doi	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_its_proposal_	1	its_proposal_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_its_proposal_	2	proposal_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_its_proposal_	3	award_doi	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_journal	1	journal_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_journal	2	title	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_journal_	1	journal_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_journal_	2	title	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_longhurst_code	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_longhurst_code	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_longhurst_code	3	description	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_longhurst_code_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_longhurst_code_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_longhurst_code_	3	description	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	2	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	3	active	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	4	is_public	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	5	ncbi_taxonomy_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	6	domain	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	7	ncbi_superkingdom	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	8	ncbi_kingdom	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	9	ncbi_phylum	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	10	ncbi_class	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	11	ncbi_order	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	12	ncbi_family	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	13	ncbi_genus	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	14	ncbi_species	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	15	cultured	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	16	strain	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	17	genus	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	18	species	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	19	gold_phylogeny	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	20	uncultured_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	21	culture_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	22	latitude	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	23	longitude	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	24	altitude	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	25	altitude2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	26	depth	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	27	depth2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	28	elevation	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	29	elevation2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	30	subsurface_depth1	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	31	subsurface_depth2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	32	clade	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	33	sample_collection_site	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	34	oxygen_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	35	oxygen_requirement	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	36	cell_shape	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	37	motility	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	38	sporulation	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	39	temperature_range	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	40	salinity	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	41	sample_isolation_country_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	42	geographic_location	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	43	gram_stain	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	44	host_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	45	type_strain	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	46	ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	47	ecosystem_category	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	48	ecosystem_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	49	ecosystem_subtype	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	50	specific_ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	51	host_body_site	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	52	host_body_subsite	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	53	ecotype	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	54	proport_ocean	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	55	proport_isolation	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	56	proport_station	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	57	proport_woa_temperature	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	58	proport_woa_salinity	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	59	proport_woa_dissolved_oxygen	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	60	proport_woa_silicate	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	61	proport_woa_phosphate	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	62	proport_woa_nitrate	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	63	viral_group	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	64	viral_subgroup	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	65	sample_collection_temperature	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	66	pressure	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	67	chlorophyll_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	68	salinity_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	69	nitrate_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism	70	ph1	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism	71	ph2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	2	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	3	active	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	4	is_public	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	5	ncbi_taxonomy_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	6	domain	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	7	ncbi_superkingdom	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	8	ncbi_kingdom	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	9	ncbi_phylum	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	10	ncbi_class	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	11	ncbi_order	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	12	ncbi_family	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	13	ncbi_genus	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	14	ncbi_species	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	15	cultured	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	16	strain	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	17	genus	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	18	species	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	19	gold_phylogeny	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	20	uncultured_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	21	culture_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	22	latitude	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	23	longitude	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	24	altitude	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	25	altitude2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	26	depth	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	27	depth2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	28	elevation	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	29	elevation2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	30	subsurface_depth1	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	31	subsurface_depth2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	32	clade	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	33	sample_collection_site	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	34	oxygen_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	35	oxygen_requirement	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	36	cell_shape	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	37	motility	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	38	sporulation	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	39	temperature_range	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	40	salinity	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	41	sample_isolation_country_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	42	geographic_location	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	43	gram_stain	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	44	host_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	45	type_strain	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	46	ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	47	ecosystem_category	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	48	ecosystem_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	49	ecosystem_subtype	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	50	specific_ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	51	host_body_site	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	52	host_body_subsite	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	53	ecotype	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	54	proport_ocean	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	55	proport_isolation	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	56	proport_station	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	57	proport_woa_temperature	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	58	proport_woa_salinity	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	59	proport_woa_dissolved_oxygen	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	60	proport_woa_silicate	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	61	proport_woa_phosphate	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	62	proport_woa_nitrate	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	63	viral_group	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	64	viral_subgroup	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	65	sample_collection_temperature	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	66	pressure	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	67	chlorophyll_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	68	salinity_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	69	nitrate_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_organism_	70	ph1	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_	71	ph2	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_biotic_rel	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_biotic_rel	2	biotic_relationship_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_biotic_rel_	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_biotic_rel_	2	biotic_relationship_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_cell_arrangement	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_cell_arrangement	2	cell_arrangement_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_cell_arrangement_	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_cell_arrangement_	2	cell_arrangement_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_disease	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_disease	2	disease_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_disease_	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_disease_	2	disease_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_energy_source	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_energy_source	2	energy_source_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_energy_source_	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_energy_source_	2	energy_source_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_habitat	1	organism_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_organism_habitat	2	habitat_id	DECIMAL	YES		38	6	information_schema
+img-db-2 postgresql.img_gold	gold_master_organism_habitat_	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_habitat_	2	habitat_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_metabolism	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_metabolism	2	metabolism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_metabolism_	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_metabolism_	2	metabolism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_phenotype	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_phenotype	2	phenotype_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_phenotype_	1	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_organism_phenotype_	2	phenotype_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission	1	permission_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission	2	contact_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission	3	user_role	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_permission	4	study_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission	5	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission	6	analysis_project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission	7	biosample_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission	8	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission_	1	permission_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission_	2	contact_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission_	3	user_role	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_permission_	4	study_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission_	5	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission_	6	analysis_project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission_	7	biosample_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_permission_	8	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	2	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	3	project_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	4	active	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	5	is_public	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	6	add_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	7	mod_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	8	master_study_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	9	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	10	ncbi_bioproject_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	11	its_proposal_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	12	gpts_proposal_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	13	its_spid	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	14	its_sample_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	15	pmo_project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	16	sequencing_strategy	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	17	project_status	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	18	ncbi_bioproject_accession	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	19	ncbi_biosample_accession	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	20	its_data_utilization_status	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	21	sequencing_status_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	22	sequencing_quality_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	23	ncbi_locus_tag	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	24	description	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	25	funding_program	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project	26	funding_year	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	27	project_oid	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project	28	sample_oid	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	2	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	3	project_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	4	active	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	5	is_public	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	6	add_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	7	mod_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	8	master_study_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	9	organism_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	10	ncbi_bioproject_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	11	its_proposal_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	12	gpts_proposal_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	13	its_spid	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	14	its_sample_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	15	pmo_project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	16	sequencing_strategy	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	17	project_status	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	18	ncbi_bioproject_accession	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	19	ncbi_biosample_accession	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	20	its_data_utilization_status	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	21	sequencing_status_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	22	sequencing_quality_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	23	ncbi_locus_tag	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	24	description	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	25	funding_program	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_project_	26	funding_year	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	27	project_oid	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_	28	sample_oid	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_analysis_project	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_analysis_project	2	analysis_project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_analysis_project_	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_analysis_project_	2	analysis_project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_biosample	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_biosample	2	biosample_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_biosample_	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_biosample_	2	biosample_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_collaborator	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_collaborator	2	institution_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_collaborator_	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_collaborator_	2	institution_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_genome_publication	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_genome_publication	2	publication_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_genome_publication_	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_genome_publication_	2	publication_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_relevance	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_relevance	2	relevance_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_relevance_	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_relevance_	2	relevance_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_sequencing_center	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_sequencing_center	2	institution_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_sequencing_center_	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_sequencing_center_	2	institution_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_sequencing_method	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_sequencing_method	2	sequencing_method_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_sequencing_method_	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_project_sequencing_method_	2	sequencing_method_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_publication	1	publication_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_publication	2	pubmed_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_publication	3	journal_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_publication	4	volume	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_publication	5	issue	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_publication	6	page	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_publication	7	title	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_publication	8	publication_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_master_publication	9	doi	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_publication_	1	publication_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_publication_	2	pubmed_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_publication_	3	journal_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_publication_	4	volume	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_publication_	5	issue	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_publication_	6	page	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_publication_	7	title	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_publication_	8	publication_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_master_publication_	9	doi	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_sequencing_method	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_sequencing_method	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_sequencing_method_	1	id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_sequencing_method_	2	term	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_sra_experiment	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_sra_experiment	2	sra_experiment_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_sra_experiment_	1	project_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_sra_experiment_	2	sra_experiment_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study	1	study_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_study	2	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study	3	study_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study	4	active	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study	5	add_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study	6	mod_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study	7	is_public	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study	8	contact_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_study	9	ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study	10	ecosystem_category	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study	11	ecosystem_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study	12	ecosystem_subtype	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study	13	specific_ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study_	1	study_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_study_	2	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study_	3	study_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study_	4	active	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study_	5	add_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study_	6	mod_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study_	7	is_public	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study_	8	contact_id	DECIMAL	YES		38	6	describe
+img-db-2 postgresql.img_gold	gold_master_study_	9	ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study_	10	ecosystem_category	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study_	11	ecosystem_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study_	12	ecosystem_subtype	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_study_	13	specific_ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_master_timestamp	1	id	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_master_timestamp	2	last_synced	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_master_timestamp_	1	id	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_master_timestamp_	2	last_synced	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	2	display_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	3	strain	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	4	phylogeny	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	5	ncbi_taxon_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	6	domain	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	7	ncbi_kingdom	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	8	ncbi_phylum	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	9	ncbi_class	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	10	ncbi_order	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	11	ncbi_family	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	12	ncbi_genus	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	13	ncbi_species	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	14	clade	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	15	ncbi_project_id	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	16	isolation	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	17	oxygen_req	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	18	cell_shape	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	19	motility	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	20	sporulation	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	21	temp_range	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	22	salinity	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	23	comments	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	24	seq_status	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	25	img_taxon_oid	BIGINT	YES		64	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	26	add_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	27	mod_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	28	modified_by	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	29	contact_oid	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	30	iso_country	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	31	date_collected	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	32	geo_location	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	33	latitude	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	34	longitude	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	35	altitude	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	36	gram_stain	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	37	host_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	38	host_gender	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	39	host_ncbi_taxid	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	40	biotic_rel	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	41	hmp_id	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	42	locus_tag	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	43	funding_program	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	44	type_strain	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	45	ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	46	ecosystem_category	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	47	ecosystem_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	48	ecosystem_subtype	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	49	specific_ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	50	sample_body_site	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	51	sample_body_subsite	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	52	mrn	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	53	visit_num	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	54	replicate_num	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	55	pmo_project_id	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	56	project_id	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	57	cultured	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	58	uncultured_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	59	culture_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	60	bioproject_accession	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	61	biosample_accession	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	62	its_spid	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	63	pi_email	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	64	pi_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	65	legacy_project_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	66	seq_quality	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	67	depth	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	68	sequencing_strategy	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	69	pm_email	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	70	pm_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	71	ecotype	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	72	longhurst_code	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	73	longhurst_description	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	74	project_status	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	75	sequencing_quality	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	76	sequencing_depth	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	77	genus	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	78	species	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	79	proport_ocean	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	80	proport_isolation	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	81	proport_station	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	82	proport_woa_temperature	DECIMAL	YES		16	3	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	83	proport_woa_salinity	DECIMAL	YES		16	3	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	84	proport_woa_dissolved_oxygen	DECIMAL	YES		16	3	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	85	proport_woa_silicate	DECIMAL	YES		16	3	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	86	proport_woa_phosphate	DECIMAL	YES		16	3	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	87	proport_woa_nitrate	DECIMAL	YES		16	3	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	88	viral_group	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	89	viral_subgroup	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	90	gpts_proposal_id	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	91	its_proposal_id	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	92	sample_collect_temp	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	93	pressure	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	94	chlorophyll_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	95	oxygen_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	96	salinity_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	97	nitrate_concentration	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	98	ph	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	99	sequencing_status	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	100	funding_year	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	101	latitude_n	DOUBLE	YES		53		describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	102	longitude_n	DOUBLE	YES		53		describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	103	altitude_in_meters	DECIMAL	YES		16	6	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	104	altitude_in_meters2	DECIMAL	YES		16	6	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	105	depth_in_meters	DECIMAL	YES		16	6	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	106	depth_in_meters2	DECIMAL	YES		16	6	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	107	elevation_in_meters	DECIMAL	YES		16	6	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	108	elevation_in_meters2	DECIMAL	YES		16	6	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	109	subsurface_depth_in_meters	DECIMAL	YES		16	6	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	110	subsurface_depth_in_meters2	DECIMAL	YES		16	6	describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	111	its_data_utilization_status	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	112	its_proposal_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	113	biosample_gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sequencing_project	114	description	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_cell_arrangement	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_cell_arrangement	2	cell_arrangement	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_collaborator	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_collaborator	2	name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_collaborator	3	country	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_collaborator	4	url	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_disease	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_disease	2	disease	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_energy_source	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_energy_source	2	energy_source	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_genome_publications	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_genome_publications	2	pubmed_id	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_sp_genome_publications	3	journal_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_genome_publications	4	volume	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_genome_publications	5	issue	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_genome_publications	6	page	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_genome_publications	7	title	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_genome_publications	8	publication_date	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_genome_publications	9	doi	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_habitat	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_habitat	2	habitat	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_metabolism	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_metabolism	2	metabolism	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_phenotype	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_phenotype	2	phenotype	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_relevance	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_relevance	2	relevance	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_seq_center	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_seq_center	2	name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_seq_center	3	country	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_seq_center	4	url	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_seq_method	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_seq_method	2	seq_method	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_sra	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_sra	2	sra_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_study_gold_id	1	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_sp_study_gold_id	2	study_gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_study	1	study_id	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_study	2	gold_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_study	3	study_name	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_study	4	contact_oid	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_study	5	contact_email	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_study	6	ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_study	7	ecosystem_category	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_study	8	ecosystem_type	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_study	9	ecosystem_subtype	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_study	10	specific_ecosystem	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_study	11	mod_date	TIMESTAMP	YES				describe
+img-db-2 postgresql.img_gold	gold_study	12	ariel_contact_id	INTEGER	YES		32	0	describe
+img-db-2 postgresql.img_gold	gold_study	13	keycloak_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_study	14	orcid_id	CHARACTER VARYING	YES				describe
+img-db-2 postgresql.img_gold	gold_study	15	caliban_id	INTEGER	YES		32	0	describe

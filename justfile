@@ -95,10 +95,12 @@ export sql output format='json':
 # =============================================================================
 
 # Export GOLD study table to JSONL
+# The source is the single identifier "gold-db-2 postgresql", space included;
+# "gold-db-2".postgresql.gold.study does not resolve.
 [group('examples')]
 example-study:
     uv run dremio export \
-        --sql 'SELECT * FROM "gold-db-2".postgresql.gold.study' \
+        --sql 'SELECT * FROM "gold-db-2 postgresql".gold.study' \
         --format json \
         -o study.jsonl
     @echo "✓ Exported to study.jsonl"
@@ -107,7 +109,30 @@ example-study:
 [group('examples')]
 example-biosample:
     uv run dremio export \
-        --sql 'SELECT * FROM "gold-db-2".postgresql.gold.biosample LIMIT 1000' \
+        --sql 'SELECT * FROM "gold-db-2 postgresql".gold.biosample LIMIT 1000' \
         --format json \
         -o biosample.jsonl
     @echo "✓ Exported to biosample.jsonl"
+
+# =============================================================================
+# CATALOG
+# =============================================================================
+
+# Every schema in the lakehouse, with table counts
+[group('catalog')]
+schemas out='schemas.tsv':
+    uv run dremio schemas -o {{out}}
+    @echo "✓ Wrote {{out}}"
+
+# Tables in one schema, e.g. just tables 'gold-db-2 postgresql.gold'
+[group('catalog')]
+tables schema out='tables.tsv':
+    uv run dremio tables "{{schema}}" -o {{out}}
+    @echo "✓ Wrote {{out}}"
+
+# Regenerate the committed GOLD catalog dump
+[group('catalog')]
+refresh-gold-catalog:
+    uv run dremio tables 'gold-db-2 postgresql.gold' -o docs/catalog/gold-tables.tsv
+    uv run dremio columns 'gold-db-2 postgresql.gold' --deep -o docs/catalog/gold-columns.tsv
+    @echo "✓ Refreshed docs/catalog/"
