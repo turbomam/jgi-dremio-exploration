@@ -662,10 +662,16 @@ def kgx(ctx: click.Context, output_dir: str, limit: int | None, user: str, passw
 
     click.echo("querying organism_v2...", err=True)
     orgs = conn.rows(
-        f"SELECT gold_id, organism_id, organism_name, biosample_id, "
+        f"SELECT gold_id, organism_id, organism_name, biosample_id, ecosystem_path_id, "
         f"ncbi_taxonomy_id, ncbi_taxonomy_name FROM {GOLD}.organism_v2 "
         f"WHERE gold_id IS NOT NULL{f' LIMIT {int(limit)}' if limit else ''}"
     )
+
+    # The GOLD ecosystem classification, all 4,226 nodes. Small enough to take whole
+    # even when the organisms are sampled, and taking it whole keeps the hierarchy
+    # connected instead of leaving orphan parents.
+    click.echo("querying ecosystem_classification_2...", err=True)
+    eco = conn.rows(f"SELECT ecosystem_id, ecosystem, parent, type FROM {GOLD}.ecosystem_classification_2")
 
     if limit:
         bs, oid = id_list(orgs, "biosample_id"), id_list(orgs, "organism_id")
@@ -751,6 +757,19 @@ def kgx(ctx: click.Context, output_dir: str, limit: int | None, user: str, passw
             {"id": f"NCBITaxon:{tid}", "category": "biolink:OrganismTaxon", "name": tname, "provided_by": SOURCE}
         )
 
+    # GOLD ecosystem terms. biolink's `environmental feature` is_a planetary entity,
+    # which is the closest fit for "Marine" or "Intertidal zone" as a kind of place.
+    for r in eco:
+        nodes.append(
+            {
+                "id": f"gold.ecosystem:{int(r['ecosystem_id'])}",
+                "category": "biolink:EnvironmentalFeature",
+                "name": r["ecosystem"],
+                "provided_by": SOURCE,
+                "xref": "",
+            }
+        )
+
     edges: list[dict[str, Any]] = []
 
     def add(sub: str, pred: str, obj: str, rel: str) -> None:
@@ -771,6 +790,30 @@ def kgx(ctx: click.Context, output_dir: str, limit: int | None, user: str, passw
             add(s, "biolink:derives_from", f"gold:{sample_acc[r['biosample_id']]}", "gold:organism_v2.biosample_id")
         if r.get("ncbi_taxonomy_id"):
             add(s, "biolink:in_taxon", f"NCBITaxon:{int(r['ncbi_taxonomy_id'])}", "gold:organism_v2.ncbi_taxonomy_id")
+        if r.get("ecosystem_path_id"):
+            # `occurs in` has no declared domain or range in biolink, so it carries an
+            # organism to a place without a type violation.
+            add(
+                s,
+                "biolink:occurs_in",
+                f"gold.ecosystem:{int(r['ecosystem_path_id'])}",
+                "gold:organism_v2.ecosystem_path_id",
+            )
+
+    # The classification tree. `subclass of` declares domain and range of `ontology
+    # class`, and these nodes are typed `environmental feature`, so this is a
+    # deliberate looser use rather than an oversight. `part of` is the alternative if
+    # a consumer would rather keep the declared domains clean.
+    eco_ids = {int(r["ecosystem_id"]) for r in eco}
+    for r in eco:
+        if r.get("parent") is not None and int(r["parent"]) in eco_ids:
+            add(
+                f"gold.ecosystem:{int(r['ecosystem_id'])}",
+                "biolink:subclass_of",
+                f"gold.ecosystem:{int(r['parent'])}",
+                "gold:ecosystem_classification_2.parent",
+            )
+
     for r in links:
         if r["organism_id"] in org_acc and r["master_study_id"] in study_acc:
             add(

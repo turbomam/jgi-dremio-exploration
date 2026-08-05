@@ -241,3 +241,40 @@ Run it with:
 uv run --with "dremio-flight @ https://github.com/dremio-hub/arrow-flight-client-examples/releases/download/dremio-flight-python-v1.1.0/dremio_flight-1.1.0-py3-none-any.whl" --with pandas your_script.py
 ```
 
+
+## KGX output
+
+`dremio kgx` writes a KGX nodes/edges TSV pair that a KG-Hub `merge.yaml` can take as a source directly, so a downstream graph needs no transform code.
+
+Categories and predicates were checked against `biolink-model.yaml` rather than recalled:
+
+| GOLD | biolink | note |
+|---|---|---|
+| `organism_v2` row | `biolink:IndividualOrganism` | `is_a organismal entity` |
+| `ncbi_taxonomy_id` | `biolink:OrganismTaxon` | emitted as `NCBITaxon:<id>` |
+| `ecosystem_classification_2` node | `biolink:EnvironmentalFeature` | `is_a planetary entity` |
+| `study` | `biolink:Study` | `is_a activity` |
+| `biosample` | `biolink:MaterialSample` | `is_a physical entity` |
+| organism to taxon | `biolink:in_taxon` | |
+| organism to ecosystem | `biolink:occurs_in` | no declared domain or range, so no type violation |
+| ecosystem to parent | `biolink:subclass_of` | see below |
+| organism to study | `biolink:related_to` | via `project.organism_id` and `master_study_id` |
+
+Node ids use `gold_id`, the public accession, which carries no foreign key anywhere in GOLD but is what NMDC already records as `gold:Gp...`.
+
+One deliberate looseness: `subclass_of` declares domain and range of `ontology class`, while the ecosystem nodes are typed `environmental feature`. `part_of` is the alternative for a consumer who would rather keep the declared domains clean.
+
+A 300-organism sample produces a connected taxa-to-environment graph:
+
+```
+Methanococcoides sp. FTZ1  (gold:Go0640081)
+  in_taxon    -> Methanococcoides  (NCBITaxon:2225)
+  occurs_in   -> Mangrove sediment
+    subclass_of -> Intertidal zone
+      subclass_of -> Marine
+        subclass_of -> Aquatic
+          subclass_of -> Environmental
+            subclass_of -> root
+```
+
+The whole 4,226-node ecosystem classification is always emitted, even when organisms are sampled, so the hierarchy stays connected instead of leaving orphan parents. Coverage limits worth knowing: 342,880 of 605,885 organisms carry `ecosystem_path_id`, all 605,885 carry `ncbi_taxonomy_id`, and `env_broad_scale` is populated on 49 rows, so the MIxS environmental triad is not usable from this table.
