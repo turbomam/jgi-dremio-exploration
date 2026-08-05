@@ -85,6 +85,54 @@ Checked against this dump on 2026-08-05:
 
 Both names are listed as key GOLD tables in the `jgi-lakehouse` skill's `references/databases.md` ([cmungall/lakehouse-skills](https://github.com/cmungall/lakehouse-skills)), which also gives the GOLD schema as 42 tables where this dump finds 387. Confirm a path from the catalog before relying on it.
 
+## Join keys that are not foreign keys
+
+Declared foreign keys cover a minority of the schema. **314 of the 387 GOLD tables have no declared foreign key at all**, and **no declared foreign key touches any `dw_*` or `gold_master_*` table**. Anyone planning joins from `gold-foreign-keys.tsv` alone will miss most of the graph.
+
+Derived from the dumps in this directory by matching identifier-shaped column names. Counts are tables in `"gold-db-2 postgresql".gold` carrying that column with no foreign key declared on it.
+
+### The public accession
+
+| Column | Tables, no FK |
+|---|---|
+| `gold_id` | 21 |
+
+`gold_id` is the external GOLD accession, and it is `study_id` 117882 rendered as `Gs0117882`. It appears on all five core entity tables (`study`, `project`, `biosample`, `organism_v2`, `analysis_project`), on every `gold_master_*` and `snapshot_*` mirror, and carries no constraint anywhere. This is the identifier the outside world uses; NMDC records it as `gold:Gp...` in `gold_sequencing_project_identifiers`. For a knowledge graph it is more useful than the numeric internal keys, and it is invisible to any FK-driven tool.
+
+### Cross-system identifiers
+
+These can never be foreign keys, because their targets are in other databases. They are the bridges out of GOLD.
+
+| Column | Tables | Bridges to |
+|---|---|---|
+| `ncbi_tax_id`, `ncbi_taxonomy_id` | 12, 9 | NCBI Taxonomy |
+| `ncbi_bioproject_accession`, `ncbi_bioproject_id` | 12, 12 | NCBI BioProject |
+| `ncbi_biosample_accession`, `ncbi_biosample_id` | 11, 6 | NCBI BioSample |
+| `its_proposal_id` | 9 | JGI proposal system |
+| `its_spid` | 6 | JGI Sequencing Project ID, the join to the PPS/Data Warehouse services |
+| `its_sample_id` | 6 | JGI sample tracking |
+| `project_oid`, `sample_oid` | 9, 7 | IMG object identifiers |
+| `pmo_project_id`, `gpts_proposal_id` | 7, 7 | PMO / GPTS |
+| `orcid_id` | 6 | ORCID, for people |
+
+There are also denormalized NCBI lineage columns (`ncbi_superkingdom`, `ncbi_phylum`, `ncbi_class`, `ncbi_order`, `ncbi_family`, `ncbi_genus`, `ncbi_species`) on 7 to 8 tables each.
+
+### Internal keys with partial FK coverage
+
+| Column | Tables | With FK | Without |
+|---|---|---|---|
+| `id` | 198 | 0 | 198 |
+| `organism_id` | 42 | 23 | 19 |
+| `project_id` | 36 | 17 | 19 |
+| `analysis_project_id` | 32 | 9 | 23 |
+| `biosample_id` | 27 | 16 | 11 |
+| `study_id` | 14 | 5 | 9 |
+| `contact_id` | 13 | 2 | 11 |
+
+The uncovered occurrences cluster in the `dw_*`, `gold_master_*`, `backup_20260731_*` and `snapshot_*` families. Same column name, same apparent meaning, no constraint.
+
+**This section is inference from column names, not verified joins.** Nothing here has been checked for value overlap or cardinality between the two sides. Treat it as a list of candidates to test, not as a schema.
+
 ## Caveats
 
 - A dump is a snapshot. The `backup_20260731_*` tables show the source schema does change.
