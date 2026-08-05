@@ -774,18 +774,19 @@ def kgx(ctx: click.Context, output_dir: str, limit: int | None, user: str, passw
             seen.add(str(e["id"]))
             deduped.append(e)
 
-    # organism_v2.biosample_id is a declared foreign key that is almost never
-    # populated: 243 of 605,885 rows on 2026-08-05, 0.04%. The linkage that carries
-    # the data goes the long way round, organism_v2 <- project.organism_id ...
-    # project_biosample -> biosample, which has 285,986 rows against 279,671
-    # biosamples. Until this command follows that path, say so rather than shipping a
-    # graph that looks like GOLD has no samples.
+    # GOLD does not connect organisms to biosamples, measured 2026-08-05:
+    #   organism_v2.biosample_id (a declared FK)     243 of 605,885 rows
+    #   the four-table join via project_biosample    433 rows
+    #   organism_v2.ncbi_biosample_id                  0 of 605,885 rows
+    # The project path looks promising from row counts alone (285,986 rows in
+    # project_biosample, 438,201 projects with an organism_id) but only 433 projects
+    # are in both sets. So this is a property of GOLD, not a gap in this command:
+    # 605,885 organisms and 279,671 biosamples with about 400 links between them.
     derives = sum(1 for e in deduped if e["predicate"] == "biolink:derives_from")
     if not derives:
         click.echo(
-            "NOTE: 0 derives_from edges. organism_v2.biosample_id is populated on only "
-            "0.04% of rows; the real organism-to-biosample path is via project and "
-            "project_biosample and is not implemented yet.",
+            "NOTE: 0 derives_from edges, which is expected. GOLD has ~400 organism-to-biosample "
+            "links across 605,885 organisms and 279,671 biosamples; see docs/catalog/README.md.",
             err=True,
         )
 

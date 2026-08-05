@@ -145,9 +145,29 @@ Measured 2026-08-05, and it cuts the other way from everything above:
 
 `organism_v2.biosample_id` is a real declared foreign key (`biosample_v2_fk` → `biosample.biosample_id`) and it is almost entirely null. A KG built by walking declared foreign keys would conclude that GOLD organisms have essentially no samples.
 
-The linkage that carries the data takes the long way round: `organism_v2` ← `project.organism_id` … `project.project_id` ← `project_biosample.project_id` → `biosample`. That is 285,986 `project_biosample` rows against 279,671 biosamples and 438,201 projects carrying an `organism_id`.
+**Correction, same day.** An earlier version of this section said the linkage "takes the long way round" via `organism_v2` ← `project.organism_id` … `project_biosample` → `biosample`, citing 285,986 `project_biosample` rows and 438,201 projects with an `organism_id`. Those counts are right and the inference from them was wrong. Running the four-table join returns **433 rows**, not ~280,000:
 
-So the lesson from the section above has a mirror image. Undeclared columns can be the real joins, **and** declared foreign keys can be nearly empty. Check cardinality before trusting either.
+```
+edge_rows            433
+distinct_organisms   413
+distinct_biosamples  286
+```
+
+The reason is that the two project populations barely intersect:
+
+| | Projects |
+|---|---|
+| in `project_biosample` | 285,986 |
+| with an `organism_id` | 438,201 |
+| in **both** | **433** |
+
+The remaining candidate also fails. `organism_v2.ncbi_biosample_id` exists and is populated on **0 of 605,885 rows**, and `biosample` has no `ncbi_biosample_accession` column at all.
+
+**So GOLD does not connect organisms to biosamples**, by declared foreign key (243), by the project path (433), or by NCBI identifier (0). They are effectively separate populations: 605,885 organisms and 279,671 biosamples with ~400 links between them.
+
+For a knowledge graph this is a modelling fact, not an obstacle to route around. A GOLD-derived graph has an organism component (organism to taxon to study) and a biosample component, and nothing meaningful joining them. Anything that appears to join them needs its cardinality checked before it is believed.
+
+Two lessons, pointing opposite ways. Undeclared columns can be the real joins; declared foreign keys can be nearly empty; and a link table's row count says nothing about whether it links the things you want. Count the actual join.
 
 `organism_v2` also has 605,885 rows, not the 598,061 quoted in older notes.
 
