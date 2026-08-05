@@ -189,8 +189,8 @@ Measured 2026-08-05 against `organism_v2` (605,885 rows) over REST:
 | | |
 |---|---|
 | Results page cap | **500 rows, hard.** `limit=1000` and `limit=5000` both return **0 rows**, not 500 and not an error |
-| Throughput | 1,912 rows/sec |
-| Full table | ~5.3 minutes, **1,212 sequential HTTPS round trips** through Cloudflare |
+| Throughput | 1,289 rows/sec measured over the full table (the first 5,000 rows run at 1,912/sec, so short samples overstate it) |
+| Full table | 7 min 50 s, **1,212 sequential HTTPS round trips** through Cloudflare |
 
 The page cap is the reason `MAX_PAGE` is a constant and not a tuning knob. Raising it to go faster returns an empty page, and since `rowCount` is also unreliable, the caller reads that as the end of the data and silently truncates.
 
@@ -207,12 +207,12 @@ Same query, `SELECT gold_id, organism_name, ncbi_taxonomy_id FROM ... organism_v
 
 | | REST | Arrow Flight |
 |---|---|---|
-| Throughput | 1,912 rows/sec | **19,456 rows/sec** |
-| Wall clock | ~5.3 min | **31.1 s** |
+| Throughput | 1,289 rows/sec | **19,456 rows/sec** |
+| Wall clock | 7 min 50 s | **31.1 s** |
 | Round trips | 1,212 | 1 stream |
 | Page cap | 500 rows | none |
 
-**10.2x**, and the gap is round-trip overhead rather than bandwidth, so it widens with row count.
+**15.1x**, measured end to end on both sides rather than extrapolated. An earlier estimate here said 10.2x, projected from the first 5,000 rows at 1,912 rows/sec. The full pull averaged 1,289 rows/sec, so REST slows down over a long run and the projection was optimistic. The gap is round-trip overhead rather than bandwidth, so it widens with row count.
 
 Two things that make Flight easier as well as faster: it needs **no Cloudflare cookie** (username and password only, because it does not traverse Cloudflare), and it connects with **`tls=False`** on port 32010.
 
