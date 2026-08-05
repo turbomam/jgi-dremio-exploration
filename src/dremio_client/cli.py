@@ -392,6 +392,61 @@ def schemas(
     )
 
 
+# Foreign keys are not in Dremio's INFORMATION_SCHEMA at all: it exposes only
+# CATALOGS, COLUMNS, SCHEMATA, TABLES and VIEWS, with no constraint views. The
+# relationships still exist in the underlying database, and Dremio can pass a query
+# straight through to a relational source, so this reads Postgres's own catalog.
+FK_SQL = """
+SELECT con.conname AS constraint_name,
+       src.relname AS src_table, src_col.attname AS src_column,
+       tgt_ns.nspname AS tgt_schema, tgt.relname AS tgt_table, tgt_col.attname AS tgt_column,
+       sk.ord AS column_position
+FROM pg_constraint con
+JOIN pg_class src ON src.oid = con.conrelid
+JOIN pg_namespace src_ns ON src_ns.oid = src.relnamespace
+JOIN pg_class tgt ON tgt.oid = con.confrelid
+JOIN pg_namespace tgt_ns ON tgt_ns.oid = tgt.relnamespace
+JOIN unnest(con.conkey) WITH ORDINALITY AS sk(attnum, ord) ON true
+JOIN unnest(con.confkey) WITH ORDINALITY AS tk(attnum, ord) ON tk.ord = sk.ord
+JOIN pg_attribute src_col ON src_col.attrelid = con.conrelid AND src_col.attnum = sk.attnum
+JOIN pg_attribute tgt_col ON tgt_col.attrelid = con.confrelid AND tgt_col.attnum = tk.attnum
+WHERE con.contype = 'f' AND src_ns.nspname = {schema}
+ORDER BY src.relname, con.conname, sk.ord
+"""
+
+
+def external_query(source: str, inner_sql: str) -> str:
+    """Wrap a source-native query for Dremio's pass-through.
+
+    The inner SQL becomes a single-quoted Dremio string literal, so its own single
+    quotes have to be doubled.
+    """
+    escaped = inner_sql.replace("'", "''")
+    return f"SELECT * FROM TABLE(\"{source}\".external_query('{escaped}'))"
+
+
+@main.command(name="foreign-keys")
+@click.argument("schema")
+@with_catalog_options
+@click.pass_context
+def foreign_keys(
+    ctx: click.Context, schema: str, output: IO[str], user: str, password: str, cf_token: str | None, fmt: str
+) -> None:
+    """Dump foreign keys for a schema on a PostgreSQL source
+
+    Dremio's INFORMATION_SCHEMA has no constraint views, so this passes a query
+    through to the source's own pg_catalog. That means it only works for PostgreSQL
+    sources: 'gold-db-2 postgresql.gold' works, a MySQL source does not.
+
+    Composite keys produce one row per column, ordered by column_position.
+    """
+    source, _, pg_schema = schema.partition(".")
+    if not pg_schema:
+        raise click.ClickException(f"expected 'source.schema', got {schema!r}")
+    inner = FK_SQL.format(schema="'" + pg_schema.replace("'", "''") + "'")
+    dump(ctx, external_query(source, inner), user, password, cf_token, output, fmt)
+
+
 @main.command()
 @click.argument("schema")
 @with_catalog_options

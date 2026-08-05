@@ -92,7 +92,14 @@ uv run dremio tables 'gold-db-2 postgresql.gold' -o gold-tables.tsv
 
 # Column-level schema dump
 uv run dremio columns 'gold-db-2 postgresql.gold' --deep -o gold-columns.tsv
+
+# Foreign keys (PostgreSQL sources only)
+uv run dremio foreign-keys 'gold-db-2 postgresql.gold' -o gold-foreign-keys.tsv
 ```
+
+### Where foreign keys come from
+
+Dremio's `INFORMATION_SCHEMA` has no constraint views: `CATALOGS`, `COLUMNS`, `SCHEMATA`, `TABLES`, `VIEWS`, and nothing else. The constraints do exist in the underlying database, and Dremio can pass a query through to a relational source, so `foreign-keys` reads Postgres's `pg_catalog` directly. GOLD has 376 foreign keys across 73 tables. This works only for PostgreSQL sources; the MySQL ones (`myco-db-*`, `img-db-1`) would need a different query.
 
 A pre-generated dump of GOLD lives in [`docs/catalog/`](docs/catalog/).
 
@@ -149,8 +156,8 @@ Confirmed paths (verified 2026-08-05):
 | `"img-db-2 postgresql".img_gold` | 120 tables, including `gold_sequencing_project` |
 
 Notes:
-- `organism_v2` replaces the deprecated `organism` table.
-- Sequencing projects live in the IMG namespace, not GOLD.
+- `organism_v2` replaces the deprecated `organism` table, which is not in the schema at all.
+- There is no `gold.sequencing_project`. GOLD has `dw_sequencing_project`; the IMG namespace has `"img-db-2 postgresql".img_gold.gold_sequencing_project`.
 - The lakehouse holds far more than GOLD and IMG: 6,096 schemas in total, dominated by `myco-db-*` (6,009 schemas across three MySQL sources).
 
 For GOLD's own documentation see the [GOLD home page](https://gold.jgi.doe.gov/).

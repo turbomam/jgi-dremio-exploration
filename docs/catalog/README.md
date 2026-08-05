@@ -10,7 +10,29 @@ These are metadata only: table names, column names, types, nullability. No row d
 |---|---|
 | `gold-tables.tsv` | The 387 tables in `"gold-db-2 postgresql".gold` |
 | `gold-columns.tsv` | 4,712 columns across all 387 of those tables |
+| `gold-foreign-keys.tsv` | 376 foreign keys, over 73 source tables |
 | `img_gold-columns.tsv` | Columns for `"img-db-2 postgresql".img_gold`, which holds `gold_sequencing_project` |
+| `img_gold-foreign-keys.tsv` | Foreign keys for the same schema |
+
+## Reading `*-foreign-keys.tsv`
+
+Columns are `constraint_name`, `src_table`, `src_column`, `tgt_schema`, `tgt_table`, `tgt_column`, `column_position`. Composite keys produce one row per column, ordered by `column_position`.
+
+**Dremio's `INFORMATION_SCHEMA` has no constraint views at all**: it exposes only `CATALOGS`, `COLUMNS`, `SCHEMATA`, `TABLES` and `VIEWS`. The relationships are still in the underlying Postgres, and Dremio can pass a query straight through, so `dremio foreign-keys` reads `pg_catalog` directly. That only works for PostgreSQL sources; the `myco-db-*` and `img-db-1` MySQL sources need a different query.
+
+The most-referenced GOLD tables, which is a decent proxy for what a graph should be built around:
+
+| Referenced table | Incoming FKs |
+|---|---|
+| `cvyes_no` | 30 |
+| `contact` | 29 |
+| `organism_v2` | 24 |
+| `project` | 19 |
+| `biosample` | 16 |
+| `package_version` | 11 |
+| `analysis_project` | 11 |
+
+`organism_v2` is the hub: every `organism_*` detail table (`organism_habitat`, `organism_metabolism`, `organism_phenotype`, and the rest) points at it, and it points at `biosample` in turn. `analysis_project` joins `study` and `organism_v2`.
 
 ## Reading `*-columns.tsv`
 
@@ -59,7 +81,7 @@ Checked against this dump on 2026-08-05:
 | Name | Reality |
 |---|---|
 | `"gold-db-2 postgresql".gold.organism` | Not present. Use `organism_v2` (207 columns). |
-| `"gold-db-2 postgresql".gold.sequencing_project` | Not present. Sequencing projects are in the IMG namespace: `"img-db-2 postgresql".img_gold.gold_sequencing_project` (114 columns). |
+| `"gold-db-2 postgresql".gold.sequencing_project` | Not present under that name. GOLD has `dw_sequencing_project`; the IMG namespace has `"img-db-2 postgresql".img_gold.gold_sequencing_project` (114 columns). |
 
 Both names are listed as key GOLD tables in the `jgi-lakehouse` skill's `references/databases.md` ([cmungall/lakehouse-skills](https://github.com/cmungall/lakehouse-skills)), which also gives the GOLD schema as 42 tables where this dump finds 387. Confirm a path from the catalog before relying on it.
 

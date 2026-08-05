@@ -135,4 +135,7 @@ tables schema out='tables.tsv':
 refresh-gold-catalog:
     uv run dremio tables 'gold-db-2 postgresql.gold' -o docs/catalog/gold-tables.tsv
     uv run dremio columns 'gold-db-2 postgresql.gold' --deep -o docs/catalog/gold-columns.tsv
+    uv run dremio foreign-keys 'gold-db-2 postgresql.gold' -o docs/catalog/gold-foreign-keys.tsv
+    uv run dremio columns 'img-db-2 postgresql.img_gold' --deep -o docs/catalog/img_gold-columns.tsv
+    uv run dremio foreign-keys 'img-db-2 postgresql.img_gold' -o docs/catalog/img_gold-foreign-keys.tsv
     @echo "✓ Refreshed docs/catalog/"
