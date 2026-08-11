@@ -53,8 +53,7 @@ def _json_or_die(r: requests.Response, what: str) -> Any:
             # bare text after the label so a markup change costs the detail line rather than
             # the whole diagnosis.
             body = r.text or ""
-            m = (re.search(r"Reason:\s*<strong>([^<]+)</strong>", body)
-                 or re.search(r"Reason:\s*([^<\n]{3,120})", body))
+            m = re.search(r"Reason:\s*<strong>([^<]+)</strong>", body) or re.search(r"Reason:\s*([^<\n]{3,120})", body)
             reason = f"\nUpstream reason: {m.group(1).strip()}" if m else ""
             raise click.ClickException(
                 f"{what}: HTTP {r.status_code} with HTML, which is an error page rather than the "
