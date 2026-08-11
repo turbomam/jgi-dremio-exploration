@@ -49,13 +49,19 @@ def _json_or_die(r: requests.Response, what: str) -> Any:
         # Handshake with remote server", cf-mitigated absent, with a cookie that had
         # 18.4 days left and that Cloudflare accepted. A JGI-side outage, not us.
         if r.status_code >= 500:
-            m = re.search(r"Reason:\s*<strong>([^<]+)</strong>", r.text or "")
-            reason = f"\nCloudflare said: {m.group(1).strip()}" if m else ""
+            # The 2026-08-11 page wrapped it as `Reason: <strong>...</strong>`. Fall back to
+            # bare text after the label so a markup change costs the detail line rather than
+            # the whole diagnosis.
+            body = r.text or ""
+            m = (re.search(r"Reason:\s*<strong>([^<]+)</strong>", body)
+                 or re.search(r"Reason:\s*([^<\n]{3,120})", body))
+            reason = f"\nUpstream reason: {m.group(1).strip()}" if m else ""
             raise click.ClickException(
-                f"{what}: Cloudflare returned its own error page (HTTP {r.status_code}), which "
-                f"means it could not reach the Dremio origin.{reason}\n"
-                f"This is a lakehouse-side outage. {COOKIE_NAME} is not implicated, so do not "
-                f"refresh it. Retry later; raise it with JGI if it persists."
+                f"{what}: HTTP {r.status_code} with HTML, which is an error page rather than the "
+                f"Access sign-in page.{reason}\n"
+                f"That usually means the edge could not reach the Dremio origin, so check whether "
+                f"the service is up before refreshing {COOKIE_NAME}. Retry later; raise it with "
+                f"JGI if it persists."
             )
         raise click.ClickException(
             f"{what}: Cloudflare returned an HTML sign-in page (HTTP {r.status_code}), so the "
