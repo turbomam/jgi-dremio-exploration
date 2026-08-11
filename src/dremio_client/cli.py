@@ -3,6 +3,7 @@
 import base64
 import datetime as dt
 import json
+import re
 import time
 from collections.abc import Iterator
 from pathlib import Path
@@ -39,6 +40,28 @@ def _json_or_die(r: requests.Response, what: str) -> Any:
     """Parse a lakehouse response, turning each failure mode into a plain message."""
     ctype = r.headers.get("content-type", "").split(";")[0].strip()
     if ctype == "text/html":
+        # HTML alone does not mean the cookie is bad. Cloudflare serves the Access
+        # sign-in page with HTTP 200, but it also serves its OWN error pages as HTML
+        # when it cannot reach the origin. Collapsing both into "refresh your cookie"
+        # is a wrong answer that costs a browser trip and fixes nothing.
+        #
+        # Measured 2026-08-11: HTTP 500, "500 Proxy Error ... Error during SSL
+        # Handshake with remote server", cf-mitigated absent, with a cookie that had
+        # 18.4 days left and that Cloudflare accepted. A JGI-side outage, not us.
+        if r.status_code >= 500:
+            # The 2026-08-11 page wrapped it as `Reason: <strong>...</strong>`. Fall back to
+            # bare text after the label so a markup change costs the detail line rather than
+            # the whole diagnosis.
+            body = r.text or ""
+            m = re.search(r"Reason:\s*<strong>([^<]+)</strong>", body) or re.search(r"Reason:\s*([^<\n]{3,120})", body)
+            reason = f"\nUpstream reason: {m.group(1).strip()}" if m else ""
+            raise click.ClickException(
+                f"{what}: HTTP {r.status_code} with HTML, which is an error page rather than the "
+                f"Access sign-in page.{reason}\n"
+                f"That usually means the edge could not reach the Dremio origin, so check whether "
+                f"the service is up before refreshing {COOKIE_NAME}. Retry later; raise it with "
+                f"JGI if it persists."
+            )
         raise click.ClickException(
             f"{what}: Cloudflare returned an HTML sign-in page (HTTP {r.status_code}), so the "
             f"request never reached Dremio.\n"
