@@ -1,5 +1,7 @@
 # JGI Dremio Lakehouse CLI
 
+> **Retired 2026-10-13.** JGI's lakehouse now runs Starburst at https://lakehouse.jgi.lbl.gov, and the Dremio server no longer accepts connections, so this client no longer works. Query the lakehouse with any Trino client instead.
+
 A minimal CLI for querying the JGI Dremio Lakehouse over its REST API, with bulk export past the 2,000-row limit of the web interface and commands for dumping the catalog.
 
 ## Prerequisites
